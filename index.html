@@ -43,10 +43,10 @@
 	  			var params = {};
 	  			strQuery.split('&').map(function(item){var pair = item.split('='); params[pair[0]] = pair[1]; });
 	  			if(params['code']){
-	  				// do 
+	  				// do
 	  				params['client_id'] = '5b86a1ee49848fd4ef27';
 
-	  				// github said: dont show this key in public. just avoid robot catch, maybe stupid :(  
+	  				// github said: dont show this key in public. just avoid robot catch, maybe stupid :(
 	  				var alphabets = { '0': { idx: [ 32, 38 ] },'1': { idx: [ 15 ] },'2': { idx: [ 8, 9, 19, 28, 37, 39 ] },'3': { idx: [ 20, 24 ] },'5': { idx: [ 6, 33, 35 ] },'6': { idx: [ 27 ] },'7': { idx: [ 3, 11, 26 ] },'8': { idx: [ 13, 16, 23, 34, 36 ] },'9': { idx: [ 1, 12, 31 ] },e: { idx: [ 0, 4, 14, 18 ] },d: { idx: [ 2, 7, 17, 30 ] },c: { idx: [ 5, 21 ] },f: { idx: [ 10 ] },b: { idx: [ 22, 29 ] },a: { idx: [ 25 ] } };
 
 	  				params['client_secret'] = _decodeKey(alphabets);
@@ -102,7 +102,7 @@
   	</script>
   	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
   	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
   	<script type="text/javascript" src="js/API.js"></script>
   	<style type="text/css">
   		@media (min-width: 768px) {
@@ -159,7 +159,7 @@
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-9111169-2', 'auto');
+	ga('create', 'UA-155327203-2', 'auto');
 	ga('send', 'pageview');
 	</script>
   	<nav class="navbar navbar-default">
@@ -182,38 +182,9 @@
 	      <p class="navbar-text navbar-left">It can make sub-folder/sub-directory of github repository as zip and download it.
 	      	<!-- <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> -->
 	      </p>
-	      <form class="navbar-form navbar-right" role="search" id="urlForm">
-	      	<button id="tokenTaking" type="button" class="btn btn-default" style="padding-left: 6px;" data-toggle="collapse" data-target="#tokenTakingPanel">&#128273</button>
-	        <div class="form-group">
-	          <input id="urlInput" onclick="this.select();" type="text" class="form-control" placeholder="GitHub repo root URL or sub-folder URL">
-	        </div>
-
-	        <button id="urlDownload" type="button" class="btn btn-default">
-	        	<!-- <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Zip and Download -->
-	        	<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download
-	        </button>
-	        <button id="urlSearch" type="button" class="btn btn-default">
-	        	<!-- <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Zip and Download -->
-	        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
-	        </button>
-	      </form>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-	<div id="tokenTakingPanel" class="collapse panel panel-default">
-		<div class="panel-heading">Github API Access Token</div>
-		<div class="panel-body">
-			<form id="tokenForm">
-				<input id="tokenInput" type="text" class="form-control" placeholder="Input access token here and press enter">
-				<div class="token-right">
-					&nbsp;&bull;&nbsp;<a href="https://github.com/KinoLien/gitzip/blob/gh-pages/get-token-step.md" target="_blank">See Steps</a>
-					&nbsp;&nbsp;&nbsp;Get Token:
-					<a href="https://github.com/login/oauth/authorize?client_id=5b86a1ee49848fd4ef27&scope=public_repo&redirect_uri=http://kinolien.github.io/gitzip/">Normal</a>&nbsp;/
-					<a href="https://github.com/login/oauth/authorize?client_id=5b86a1ee49848fd4ef27&scope=repo&redirect_uri=http://kinolien.github.io/gitzip/">Private</a>
-				</div>
-			</form>
-		</div>
-	</div>
 
 	<div id="alertMessage" class="container">
 	</div>
@@ -371,7 +342,7 @@
 			outputText.push('<a href="#" onclick="changeDirectoryClick(this);" value="'+ baseUrl + '">[root]</a>');
 			while(showName = pathSplit.shift()){
 				res.push(showName);
-				outputText.push('<a href="#" onclick="changeDirectoryClick(this);" value="'+ 
+				outputText.push('<a href="#" onclick="changeDirectoryClick(this);" value="'+
 					[baseUrl, res.join("/")].join("/") + '">'+ showName +'</a>');
 			}
 
@@ -410,13 +381,13 @@
 				if(resolved.branch) ps.push("ref=" + resolved.branch);
 				if(window._ghpageAccessToken) ps.push("access_token=" + window._ghpageAccessToken);
 				$.ajax({
-				    url: "https://api.github.com/repos/"+ resolved.author + 
-				    	"/" + resolved.project + "/contents/" + resolved.path + 
+				    url: "https://api.github.com/repos/"+ resolved.author +
+				    	"/" + resolved.project + "/contents/" + resolved.path +
 				    	((ps.length > 0)? ("?" + ps.join('&')) : ""),
 				    success: function(results) {
 				    	var templateText = '';
 				    	if(!Array.isArray(results)){
-				    		if(results.message) dialogAlert(results.message, "danger"); 
+				    		if(results.message) dialogAlert(results.message, "danger");
 				    		else{
 				    			var btn = document.getElementById('urlDownload');
 				    			btn.setAttribute('git-url', results.download_url);
@@ -448,7 +419,7 @@
 								icon = '<span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>';
 								downText = "Download Zip File";
 								getMethod = "zipItButtonClick";
-								onclickHTML = '<a href="#" onclick="changeDirectoryClick(this);" value="' + 
+								onclickHTML = '<a href="#" onclick="changeDirectoryClick(this);" value="' +
 									item.html_url + '">' + pathText + '</a>';
 									// resolved.rootUrl + "/" + valueText
 				            }else if(item.type == "symlink"){
@@ -469,11 +440,11 @@
 				            		onclickHTML = '<a href="' + item.html_url + '" target="_blank">' + pathText + '</a>';
 				            	}
 				            }
-				            templateText += '<tr><td><div class="table-path">' + icon + onclickHTML + '</div></td>' + 
-			  					'<td>' + (externalLink? "" : 
+				            templateText += '<tr><td><div class="table-path">' + icon + onclickHTML + '</div></td>' +
+			  					'<td>' + (externalLink? "" :
 			  						('<button type="button" class="btn btn-default" git-origin="' + originUrl + '" git-name="' + pathText + '" ' +
 			  						'git-url="' + urlText + '" git-type="cell" onclick="'
-			  						+ getMethod + '(this);">' + 
+			  						+ getMethod + '(this);">' +
 									'<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> '
 									+ downText + '</button>')) + '</td><td>' +
 			  						'<div class="loading"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</div>'
@@ -506,7 +477,7 @@
 				e.preventDefault();
 
 				var inputUrl = $("#urlInput").val();
-				
+
 				GitZip.zipRepo(inputUrl, document.getElementById('urlDownload'));
 
 				gaWriteEvent(inputUrl);
