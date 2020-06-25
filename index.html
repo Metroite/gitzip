@@ -7,6 +7,7 @@
   	<link rel="icon" type="image/png" href="images/gitzip.png">
   	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   	<script>
+  		window.ACCESS_TOKEN_COOKIE_NAME = '_Metroite_gitzip_token';
 
   		window.is_firefox = /firefox|iceweasel/i.test(navigator.userAgent);
 
@@ -212,8 +213,8 @@
 	</div> -->
 	<script type="text/javascript">
 		var relatedPath = "/([^/]+)/([^/]+)(/(tree|blob)/([^/]+)(/(.*))?)?";
-		var relatedRepoExp = new RegExp(relatedPath);
-		var repoExp = new RegExp("^https://github.com" + relatedPath);
+		var relatedRepoExp = new RegExp("/Metroite/datpacks");
+		var repoExp = new RegExp("^https://github.com/Metroite/datpacks");
 
 		var _isProcessing = false;
 
@@ -238,6 +239,7 @@
 			_defaultTarget: document.getElementById('urlSearch').querySelector(".glyphicon"),
 			loading: function(o){
 				this.isLoading = true;
+
 				if(o){
 					this._isInCell = o.getAttribute('git-type') == 'cell';
 					if(this._isInCell){
@@ -528,7 +530,7 @@
   				}else{
   					if(url[0] != "/") url = "/" + url;
   					if(relatedRepoExp.test(url)){
-  						url = "https://github.com" + url;
+  						url = "https://github.com/Metroite/datapacks";
   						$("#urlInput").val(url);
   						$("#urlDownload").trigger('click');
   					}
