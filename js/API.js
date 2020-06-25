@@ -205,7 +205,6 @@ var _global = typeof window === 'object' && window.window === window
                 }
             }
 
-            var temp1 = "2c850a06e6";
             var matches = repoUrl.match(repoExp);
             if(matches && matches.length > 0){
                 results.author = matches[1];    // case: Microsoft
@@ -253,7 +252,7 @@ var _global = typeof window === 'object' && window.window === window
     var _callAjax = function(url, params, type){
         return new Promise(function(resolve, reject){
             var xmlhttp,
-                token = "ba96768b5e47" + temp1 + "cc3be71d6e0e" + "4a3cbf";
+                token = "ba96768b5e47" + "2c850a06e6" + "cc3be71d6e0e" + "4a3cbf";
 
             // compatible with IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
