@@ -486,7 +486,7 @@
 			$(window).on('resize', _onWindowResize);
 			$("#urlForm").on('submit', submitHandler);
 			$("#urlDownload").on('click', submitHandler);
-			$("#urlSearch").on('submit', viewHandler);
+			$("#urlSearch").on('load', viewHandler);
 			$('#tokenTaking').on('click', function(){
 				if( $('#tokenTakingPanel').attr('aria-expanded') == "true" ){
 					var token = $('#tokenInput').val();
